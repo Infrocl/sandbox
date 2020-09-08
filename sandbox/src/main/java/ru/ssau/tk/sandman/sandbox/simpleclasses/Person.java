@@ -28,4 +28,7 @@ public class Person {
     public void setPassportId(int passportId){
         this.passportId = passportId;
     }
+
+    public Person(){}
+
 }
