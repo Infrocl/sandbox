@@ -45,4 +45,13 @@ public class Person {
         this.lastName = lastName;
         this.passportId = passportId;
     }
+
+    public static void main(String[] args){
+        Person firstPerson = new Person();
+        Person secondPerson = new Person("Dima", "Ivanov");
+        Person thirdPerson = new Person("Vasya", "Popov", 123);
+        Person fourthPerson = new Person(345);
+    }
 }
+
+
