@@ -51,6 +51,9 @@ public class Person {
         Person secondPerson = new Person("Dima", "Ivanov");
         Person thirdPerson = new Person("Vasya", "Popov", 123);
         Person fourthPerson = new Person(345);
+
+        System.out.println(fourthPerson.getPassportId());
+        System.out.println(secondPerson.getFirstName());
     }
 }
 
