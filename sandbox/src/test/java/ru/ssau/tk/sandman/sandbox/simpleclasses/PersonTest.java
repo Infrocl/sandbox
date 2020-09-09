@@ -6,26 +6,36 @@ import static org.testng.Assert.*;
 
 public class PersonTest {
     @Test
-    public void testGetSet(){
+    public void testFirstName(){
         Person firstPerson = new Person();
-        Person secondPerson = new Person();
-        String name = "Jane";
+        String name = "Kira";
 
+        assertNull(firstPerson.getFirstName());
         firstPerson.setFirstName(name);
-        firstPerson.setLastName("");
-        firstPerson.setPassportId(789);
-
-        secondPerson.setFirstName("");
-        secondPerson.setLastName("Sit");
-        secondPerson.setPassportId(0);
-
         assertEquals(firstPerson.getFirstName(), name);
-        assertEquals(firstPerson.getLastName(), "");
-        assertEquals(firstPerson.getPassportId(), 789 );
-
-        assertEquals(secondPerson.getFirstName(),"");
-        assertEquals(secondPerson.getLastName(), "Sit");
-        assertEquals(secondPerson.getPassportId(), 0);
+        firstPerson.setFirstName(null);
+        assertNull(firstPerson.getFirstName());
     }
 
+    @Test
+    public void testLastName(){
+        Person firstPerson = new Person();
+        String lastName = "Petrova";
+
+        assertNull(firstPerson.getLastName());
+        firstPerson.setLastName(lastName);
+        assertEquals(firstPerson.getLastName(), lastName);
+        firstPerson.setLastName(null);
+        assertNull(firstPerson.getLastName());
+    }
+
+    @Test
+    public void testPassportId(){
+        Person firstPerson = new Person();
+        int id = 255;
+
+        assertEquals(firstPerson.getPassportId(), 0);
+        firstPerson.setPassportId(id);
+        assertEquals(firstPerson.getPassportId(), id);
+    }
 }
