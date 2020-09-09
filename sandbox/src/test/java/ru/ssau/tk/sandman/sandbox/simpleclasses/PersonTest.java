@@ -38,4 +38,33 @@ public class PersonTest {
         firstPerson.setPassportId(id);
         assertEquals(firstPerson.getPassportId(), id);
     }
+
+    @Test
+    public void testNameConstructor(){
+        Person person = new Person("First name", "Last name");
+        Person secondPerson = new Person(null, null);
+
+        assertEquals(person.getFirstName(), "First name");
+        assertEquals(person.getLastName(), "Last name");
+        assertNull(secondPerson.getFirstName());
+        assertNull(secondPerson.getLastName());
+    }
+
+    @Test
+    public void testPassportIdConstructor(){
+        Person person = new Person(358);
+        assertEquals(person.getPassportId(), 358);
+    }
+
+    @Test
+    public void testFullConstructor(){
+        Person person = new Person("First name", "Last name", 358);
+        Person secondPerson = new Person (null, null, 21);
+
+        assertEquals(person.getFirstName(), "First name");
+        assertEquals(person.getLastName(), "Last name");
+        assertEquals(person.getPassportId(), 358);
+        assertNull(secondPerson.getFirstName());
+        assertNull(secondPerson.getLastName());
+    }
 }
