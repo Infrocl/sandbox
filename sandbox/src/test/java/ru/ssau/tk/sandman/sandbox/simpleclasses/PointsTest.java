@@ -63,4 +63,15 @@ public class PointsTest {
         assertEquals(resultPoint.y, newY);
         assertEquals(resultPoint.z, newZ);
     }
+
+    @Test
+    public void testEnlarge(){
+        Point point = new Point(2, 5, 0);
+        double number = 2.0;
+        Point secondPoint = Points.enlarge(point, number);
+
+        assertEquals(secondPoint.x, point.x * number);
+        assertEquals(secondPoint.y, point.y * number);
+        assertEquals(secondPoint.z, point.z * number);
+    }
 }
