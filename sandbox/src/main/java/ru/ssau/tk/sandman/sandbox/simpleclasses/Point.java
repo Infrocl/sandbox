@@ -11,10 +11,8 @@ public class Point {
         this.z = z;
     }
 
-    public static void main(String[] args) {
-        Point firstPoint = new Point(2.5, 5, 3.77);
-        Point secondPoint = new Point(0.538, 1.284, 6.225);
-        System.out.print( "Координаты первой точки: (" + firstPoint.x + ", "+ firstPoint.y + ", " + firstPoint.z + ")");
+    public double length() { //длина радиус-вектора
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
     }
 }
 
