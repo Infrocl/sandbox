@@ -1,8 +1,7 @@
 package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
 public class Points { //класс для работы с объектами класса Point
-    private Points() {
-    } //приватный конструктор, чтобы никто не создал экземпляр этого класса
+    private Points() {} //приватный конструктор, чтобы никто не создал экземпляр этого класса
 
     public static Point sum(Point firstPoint, Point secondPoint) {
         Point point = new Point(firstPoint.x + secondPoint.x, firstPoint.y + secondPoint.y, firstPoint.z + secondPoint.z);
@@ -29,5 +28,9 @@ public class Points { //класс для работы с объектами к�
 
     public static Point enlarge(Point point, double number){
         return point = new Point(point.x * number, point.y * number, point.z * number );
+    }
+
+    public static double lenght(Point point){
+        return point.length();
     }
 }
