@@ -35,11 +35,23 @@ public class Points { //класс для работы с объектами к�
     }
 
     public static Point opposite(Point point){
-        return point = new Point(-point.x, -point.y, - point.z); //получается -0.0, убрать "-", если придётся выводить
+        return point = new Point(-point.x, -point.y, -point.z); //получается -0.0, убрать "-", если придётся выводить
     }                                                        // значения полей с помощью java.text.DecimalFormat
 
     public static Point inverse(Point firstPoint){
         Point secondPoint = new Point(1, 1, 1);
         return firstPoint = Points.divide(secondPoint, firstPoint);
+    }
+
+    public static double scalarProduct(Point firstVector, Point secondVector){
+        return firstVector.x * secondVector.x + firstVector.y * secondVector.y + firstVector.z * secondVector.z;
+    }
+
+    public static Point vectorProduct(Point firstVector, Point secondVector){
+        double newX = firstVector.y * secondVector.z - firstVector.z * secondVector.y;
+        double newY = firstVector.z * secondVector.x - firstVector.x * secondVector.z;
+        double newZ = firstVector.x * secondVector.y - firstVector.y + secondVector.x;
+        Point point = new Point(newX, newY, newZ);
+        return point;
     }
 }
