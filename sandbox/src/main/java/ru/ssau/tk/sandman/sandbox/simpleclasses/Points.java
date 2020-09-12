@@ -33,4 +33,13 @@ public class Points { //класс для работы с объектами к�
     public static double lenght(Point point){
         return point.length();
     }
+
+    public static Point opposite(Point point){
+        return point = new Point(-point.x, -point.y, - point.z); //получается -0.0, убрать "-", если придётся выводить
+    }                                                        // значения полей с помощью java.text.DecimalFormat
+
+    public static Point inverse(Point firstPoint){
+        Point secondPoint = new Point(1, 1, 1);
+        return firstPoint = Points.divide(secondPoint, firstPoint);
+    }
 }

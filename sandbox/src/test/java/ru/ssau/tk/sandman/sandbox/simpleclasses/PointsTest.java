@@ -74,4 +74,24 @@ public class PointsTest {
         assertEquals(secondPoint.y, point.y * number);
         assertEquals(secondPoint.z, point.z * number);
     }
+
+    @Test
+    public void testOpposite(){
+        Point firstPoint = new Point (1, -1, 0);
+        Point secondPoint = Points.opposite(firstPoint);
+
+        assertEquals(secondPoint.x, -firstPoint.x);
+        assertEquals(secondPoint.y, -firstPoint.y);
+        assertEquals(secondPoint.z, -firstPoint.z);
+    }
+
+    @Test
+    public void testInverse(){
+        Point firstPoint = new Point(-1, 5, 0.5);
+        Point secondPoint = Points.inverse(firstPoint);
+
+        assertEquals(secondPoint.x, 1/ firstPoint.x);
+        assertEquals(secondPoint.y, 1/ firstPoint.y);
+        assertEquals(secondPoint.z, 1/firstPoint.z);
+    }
 }
