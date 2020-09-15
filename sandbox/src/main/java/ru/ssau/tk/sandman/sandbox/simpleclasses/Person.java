@@ -21,26 +21,27 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName){
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void setPassportId(int passportId){
+    public void setPassportId(int passportId) {
         this.passportId = passportId;
     }
 
-    public Person(){}
+    public Person() {
+    }
 
-    public Person(String firstName, String lastName){
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Person(int passportId){
+    public Person(int passportId) {
         this.passportId = passportId;
     }
 
-    public Person(String firstName, String lastName, int passportId){
+    public Person(String firstName, String lastName, int passportId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.passportId = passportId;

@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 
 public class PersonTest {
     @Test
-    public void testFirstName(){
+    public void testFirstName() {
         Person firstPerson = new Person();
         String name = "Kira";
 
@@ -18,7 +18,7 @@ public class PersonTest {
     }
 
     @Test
-    public void testLastName(){
+    public void testLastName() {
         Person firstPerson = new Person();
         String lastName = "Petrova";
 
@@ -30,7 +30,7 @@ public class PersonTest {
     }
 
     @Test
-    public void testPassportId(){
+    public void testPassportId() {
         Person firstPerson = new Person();
         int id = 255;
 
@@ -40,7 +40,7 @@ public class PersonTest {
     }
 
     @Test
-    public void testNameConstructor(){
+    public void testNameConstructor() {
         Person person = new Person("First name", "Last name");
         Person secondPerson = new Person(null, null);
 
@@ -51,15 +51,15 @@ public class PersonTest {
     }
 
     @Test
-    public void testPassportIdConstructor(){
+    public void testPassportIdConstructor() {
         Person person = new Person(358);
         assertEquals(person.getPassportId(), 358);
     }
 
     @Test
-    public void testFullConstructor(){
+    public void testFullConstructor() {
         Person person = new Person("First name", "Last name", 358);
-        Person secondPerson = new Person (null, null, 21);
+        Person secondPerson = new Person(null, null, 21);
 
         assertEquals(person.getFirstName(), "First name");
         assertEquals(person.getLastName(), "Last name");
