@@ -1,12 +1,46 @@
 package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
+import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.Test;
-
 import static org.testng.Assert.*;
 
 public class PointsTest {
 
     public static double ACCURACY = 0.00005;
+
+    private boolean equalsApproximately(double firstNumber, double secondNumber) {
+        if (Math.abs(firstNumber - secondNumber) <= ACCURACY) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean equalsApproximately(@NotNull Point firstPoint, @NotNull Point secondPoint) {
+        if (equalsApproximately(firstPoint.x, secondPoint.x) && equalsApproximately(firstPoint.y, secondPoint.y) && equalsApproximately(firstPoint.z, secondPoint.z)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Test
+    public void testEqualsApproximatelyDouble() {
+        double firstNumber = -1;
+        double secondNumber = -1.1;
+        double thirdNumber = -1.0000000005;
+
+        assertFalse(equalsApproximately(firstNumber, secondNumber));
+        assertTrue(equalsApproximately(firstNumber, thirdNumber));
+    }
+
+    @Test
+    public void testEqualsApproximatelyPoint(){
+        Point firstPoint = new Point(0, 3.0000005, 10.1);
+        Point secondPoint = new Point(0.00000008, 3.0005, -10.1);
+        Point thirdPoint = new Point(0.0000000008, 3, 10.10000005);
+
+        assertTrue(equalsApproximately(firstPoint, thirdPoint));
+        assertFalse(equalsApproximately(firstPoint, secondPoint));
+    }
 
     @Test
     public void testSum() {
@@ -16,6 +50,7 @@ public class PointsTest {
         double newX = firstPoint.x + secondPoint.x;
         double newY = firstPoint.y + secondPoint.y;
         double newZ = firstPoint.z + secondPoint.z;
+        Point point = null;
 
         assertEquals(resultPoint.x, newX, ACCURACY);
         assertEquals(resultPoint.y, newY, ACCURACY);
