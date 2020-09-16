@@ -9,7 +9,7 @@ public class Points { //класс для работы с объектами к�
         return point;
     }
 
-    public static Point substruct(Point firstPoint, Point secondPoint) {
+    public static Point subtract(Point firstPoint, Point secondPoint) {
         Point point = new Point(firstPoint.x - secondPoint.x, firstPoint.y - secondPoint.y, firstPoint.z - secondPoint.z);
         return point;
     }
@@ -31,7 +31,7 @@ public class Points { //класс для работы с объектами к�
         return point = new Point(point.x * number, point.y * number, point.z * number);
     }
 
-    public static double lenght(Point point) {
+    public static double length(Point point) {
         return point.length();
     }
 
