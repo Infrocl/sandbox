@@ -8,7 +8,7 @@ import static org.testng.Assert.*;
 public class PointsTest {
     public static double ACCURACY = 0.00005;
 
-    public boolean equalsApproximately(double firstNumber, double secondNumber) {
+    private boolean equalsApproximately(double firstNumber, double secondNumber) {
         if (Math.abs(firstNumber - secondNumber) <= ACCURACY) {
             return true;
         }
@@ -96,9 +96,8 @@ public class PointsTest {
 
     @Test
     public void testLength() {
-        Point point = new Point(0, 3.5, -9);
-        double length = Math.sqrt(Math.pow(point.x, 2) + Math.pow(point.y, 2) + Math.pow(point.z, 2));
-        assertEquals(Points.length(point), length, ACCURACY);
+        Point point = new Point(0, -2, 3);
+        assertEquals(Points.length(point), 3.60555, ACCURACY);
     }
 
     @Test
