@@ -27,4 +27,24 @@ public class TangentOperationTest {
         TangentOperation tangent = new TangentOperation();
         assertThrows(ArithmeticException.class, () -> tangent.apply(Double.NaN));
     }
+
+    @Test
+    public void testApplyTriple() {
+        TangentOperation tangent = new TangentOperation();
+        assertEquals(tangent.applyTriple(Math.PI), 0, ACCURACY);
+        assertEquals(tangent.applyTriple(-Math.PI / 3), -0.13649, ACCURACY);
+    }
+
+    @Test
+    public void testApplyTripleInfinity() {
+        TangentOperation tangent = new TangentOperation();
+        assertThrows(ArithmeticException.class, () -> tangent.applyTriple(Double.POSITIVE_INFINITY));
+        assertThrows(ArithmeticException.class, () -> tangent.applyTriple(Double.NEGATIVE_INFINITY));
+    }
+
+    @Test
+    public void testApplyTripleNan() {
+        TangentOperation tangent = new TangentOperation();
+        assertThrows(ArithmeticException.class, () -> tangent.applyTriple(Double.NaN));
+    }
 }
