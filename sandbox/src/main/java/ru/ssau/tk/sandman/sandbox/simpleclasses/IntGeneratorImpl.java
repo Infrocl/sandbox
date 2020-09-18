@@ -1,7 +1,7 @@
 package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
 public class IntGeneratorImpl implements IntGenerator {
-    public int counter = 0;
+    protected int counter = 0;
 
     @Override
     public int nextInt() {
