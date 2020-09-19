@@ -15,8 +15,9 @@ public class ResettableIntGeneratorTest {
     @Test
     public void testReset() {
         ResettableIntGenerator generator = new ResettableIntGenerator();
-        generator.nextInt();
-        generator.nextInt();
+        int count = generator
+                .nextInt(); //если бы возвращался объект типа генератора, можно было бы применить
+        generator.nextInt();  //метод ещё раз
         generator.reset();
         assertEquals(generator.nextInt(), 0);
     }
