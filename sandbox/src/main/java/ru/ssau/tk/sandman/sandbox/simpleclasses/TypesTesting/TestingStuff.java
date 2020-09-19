@@ -1,4 +1,6 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.TypesTesting;
+
+import ru.ssau.tk.sandman.sandbox.simpleclasses.Pointing.NamedPoint;
 
 public class TestingStuff {
     public static void main(String[] args) {

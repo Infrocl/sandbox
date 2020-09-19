@@ -1,4 +1,6 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.Pointing;
+
+import ru.ssau.tk.sandman.sandbox.simpleclasses.NumberGenerators.Resettable;
 
 public class NamedPoint extends Point implements Resettable {
     private String name;

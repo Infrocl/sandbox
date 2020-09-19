@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.Pointing;
 
 public class Points { //класс для работы с объектами класса Point
     private Points() {

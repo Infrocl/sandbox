@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.TypesTestingTests;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static ru.ssau.tk.sandman.sandbox.simpleclasses.Types.printType;
+import static ru.ssau.tk.sandman.sandbox.simpleclasses.TypesTesting.Types.printType;
 
 public class TypesTest {
     private ByteArrayOutputStream output = new ByteArrayOutputStream(); //именно этот поток, потому что его легко преобразовать в строку

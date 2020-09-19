@@ -2,6 +2,7 @@ package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.Test;
+import ru.ssau.tk.sandman.sandbox.simpleclasses.Pointing.*;
 
 import static org.testng.Assert.*;
 

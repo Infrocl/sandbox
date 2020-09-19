@@ -1,6 +1,7 @@
 package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
 import org.testng.annotations.Test;
+import ru.ssau.tk.sandman.sandbox.simpleclasses.Pointing.NamedPoint;
 
 import static org.testng.Assert.*;
 

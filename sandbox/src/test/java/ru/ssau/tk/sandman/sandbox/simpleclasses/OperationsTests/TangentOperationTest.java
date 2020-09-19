@@ -1,6 +1,7 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.OperationsTests;
 
 import org.testng.annotations.Test;
+import ru.ssau.tk.sandman.sandbox.simpleclasses.Operations.TangentOperation;
 
 import static org.testng.Assert.*;
 

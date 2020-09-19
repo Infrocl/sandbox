@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.NumberGenerators;
 
 public class IntGeneratorImpl implements IntGenerator {
     protected int counter = 0;

@@ -1,6 +1,7 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.GeneratorTests;
 
 import org.testng.annotations.Test;
+import ru.ssau.tk.sandman.sandbox.simpleclasses.NumberGenerators.ResettableIntGenerator;
 
 import static org.testng.Assert.*;
 

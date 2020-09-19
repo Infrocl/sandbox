@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.NumberGenerators;
 
 public class ResettableIntGenerator extends IntGeneratorImpl implements Resettable, IntGenerator {
     @Override
