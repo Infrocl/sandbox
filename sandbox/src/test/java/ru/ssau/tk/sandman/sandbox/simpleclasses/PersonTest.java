@@ -40,14 +40,25 @@ public class PersonTest {
     }
 
     @Test
+    public void testGender() {
+        Person person = new Person();
+        person.setGender(Person.Gender.MALE);
+        assertEquals(person.getGender(), Person.Gender.MALE);
+        person.setGender(null);
+        assertNull(person.getGender());
+    }
+
+    @Test
     public void testNameConstructor() {
-        Person person = new Person("First name", "Last name");
-        Person secondPerson = new Person(null, null);
+        Person person = new Person("First name", "Last name", Person.Gender.FEMALE);
+        Person secondPerson = new Person(null, null, null);
 
         assertEquals(person.getFirstName(), "First name");
         assertEquals(person.getLastName(), "Last name");
+        assertEquals(person.getGender(), Person.Gender.FEMALE);
         assertNull(secondPerson.getFirstName());
         assertNull(secondPerson.getLastName());
+        assertNull(secondPerson.getGender());
     }
 
     @Test
@@ -58,13 +69,15 @@ public class PersonTest {
 
     @Test
     public void testFullConstructor() {
-        Person person = new Person("First name", "Last name", 358);
-        Person secondPerson = new Person(null, null, 21);
+        Person person = new Person("First name", "Last name", 358, Person.Gender.MALE);
+        Person secondPerson = new Person(null, null, 21, null);
 
         assertEquals(person.getFirstName(), "First name");
         assertEquals(person.getLastName(), "Last name");
         assertEquals(person.getPassportId(), 358);
+        assertEquals(person.getGender(), Person.Gender.MALE);
         assertNull(secondPerson.getFirstName());
         assertNull(secondPerson.getLastName());
+        assertNull(secondPerson.getGender());
     }
 }

@@ -1,9 +1,12 @@
 package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
 public class Person {
+    enum Gender {MALE, FEMALE}
+
     private String firstName;
     private String lastName;
     private int passportId;
+    private Gender gender;
 
     public String getFirstName() {
         return firstName;
@@ -15,6 +18,10 @@ public class Person {
 
     public int getPassportId() {
         return passportId;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 
     public void setFirstName(String firstName) {
@@ -29,58 +36,29 @@ public class Person {
         this.passportId = passportId;
     }
 
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public Person() {
     }
 
-    public Person(String firstName, String lastName) {
+    public Person(String firstName, String lastName, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
     }
 
     public Person(int passportId) {
         this.passportId = passportId;
     }
 
-    public Person(String firstName, String lastName, int passportId) {
+    public Person(String firstName, String lastName, int passportId, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.passportId = passportId;
+        this.gender = gender;
     }
-
-    /*
-    public static void main(String[] args) {
-        Person person = new Person();
-        person.setFirstName("Arkadiy");
-        int number = 5;
-        checkInt(number); //Статический метод, который выводит number = 10 вне зависимости от передаваемого значения
-        checkPerson(person); //Статический метод, который выводит имя "Олег" вне зависимости от передаваемого значения
-        System.out.println(number); //Число и имя не изменились, т.к. передача аргументов была по значению
-        System.out.println(person.getFirstName());
-    }
-*/
-    public static void main(String[] args) {
-        Person person = new Person();
-        person.setFirstName("Arkadiy");
-        checkAnotherPerson(person);
-        System.out.println(person.getFirstName()); //Значение поля не изменилось, объект на месте, метод работал с копией
-    }
-
-    private static void checkInt(int number) {
-        number = 10;
-        System.out.println(number);
-    }
-
-    private static void checkPerson(Person person) {
-        person.setFirstName("Oleg");
-        System.out.println(person.getFirstName());
-    }
-
-    private static void checkAnotherPerson(Person person) {
-        person = new Person(); //копия объекта person потерялась навсегда
-        person.setFirstName("Ignat");
-        System.out.println(person.getFirstName());
-    }
-
 }
 
 
