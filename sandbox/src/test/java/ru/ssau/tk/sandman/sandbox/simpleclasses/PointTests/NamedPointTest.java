@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.PointTests;
 
 import org.testng.annotations.Test;
 import ru.ssau.tk.sandman.sandbox.simpleclasses.Pointing.NamedPoint;

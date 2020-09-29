@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.PointTests;
 
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.Test;
