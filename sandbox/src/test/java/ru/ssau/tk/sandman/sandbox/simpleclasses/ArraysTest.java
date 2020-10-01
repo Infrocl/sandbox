@@ -6,12 +6,12 @@ import static org.testng.Assert.*;
 
 public class ArraysTest {
     @Test
-    public void testGetNewDimensionArray() {
-        int[] numbers = Arrays.getNewDimensionArray(5);
-        int[] zeroNumbers = Arrays.getNewDimensionArray(0);
+    public void testGetNewDSizeIntArray() {
+        int[] numbers = Arrays.getNewSizeIntArray(5);
+        int[] empty = Arrays.getNewSizeIntArray(0);
         assertEquals(numbers[2], 0);
         assertEquals(numbers.length, 5);
-        assertEquals(zeroNumbers.length, 0);
+        assertEquals(empty.length, 0);
     }
 
     @Test
@@ -22,11 +22,11 @@ public class ArraysTest {
         assertNotEquals(numbers[1], 0);
         assertNotEquals(numbers[2], 0);
         assertNotEquals(numbers[3], 0);
-        //int[] num = Arrays.getOnesAndTwosArray(0); ---> ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
     }
 
     @Test
     public void testGetOddNumbersArray() {
+        int[] empty = Arrays.getOddNumbersArray(0);
         int[] numbers = Arrays.getOddNumbersArray(5);
         assertEquals(numbers[2], 5);
         assertEquals(numbers[3], 7);
@@ -42,5 +42,35 @@ public class ArraysTest {
         assertEquals(numbers[4], 2);
         assertNotEquals(numbers[1], 9);
         assertEquals(numbers[2], 6);
+    }
+
+    @Test
+    public void testGetFibonacciNumbersArray() {
+        int[] numbers = Arrays.getFibonacciNumbersArray(7);
+        assertEquals(numbers[6], 8);
+        assertEquals(numbers[0], 0);
+        assertEquals(numbers[3], 2);
+        assertNotEquals(numbers[4], 4);
+    }
+
+    @Test
+    public void testGetArrayOfSqrIndexes() {
+        double[] empty = Arrays.getArrayOfSqrIndexes(0);
+        assertEquals(empty.length, 0);
+        double[] numbers = Arrays.getArrayOfSqrIndexes(5);
+        assertEquals(numbers[0], 0.0);
+        assertEquals(numbers[4], 16.0);
+        assertEquals(numbers[3], 9.0);
+        assertNotEquals(numbers[2], 2.0);
+        assertNotEquals(numbers[2], 4);
+    }
+
+    @Test
+    public void testGetNewSizeDoubleArray() {
+        double[] numbers = Arrays.getNewSizeDoubleArray(5);
+        double[] empty = Arrays.getNewSizeDoubleArray(0);
+        assertEquals(numbers[2], 0.0);
+        assertEquals(numbers.length, 5);
+        assertEquals(empty.length, 0);
     }
 }
