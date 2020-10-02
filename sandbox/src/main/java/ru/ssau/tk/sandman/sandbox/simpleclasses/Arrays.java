@@ -57,7 +57,16 @@ public class Arrays {
     }
 
     public static double[] solveQuadraticEquation(double a, double b, double c) {
+        if (Double.isInfinite(a) || Double.isInfinite(b) || Double.isInfinite(c)) {
+            throw new IllegalArgumentException("Input coefficients must be finite!");
+        }
+        if (Double.isNaN(a) || Double.isNaN(b) || Double.isNaN(c)) {
+            throw new IllegalArgumentException("Input coefficients can't be NaN!");
+        }
         if (a == 0.0) {
+            if (b == 0.0) {
+                return Arrays.getNewSizeDoubleArray(0);
+            }
             double[] result = Arrays.getNewSizeDoubleArray(1);
             result[0] = -c / b;
             return result;
@@ -77,6 +86,27 @@ public class Arrays {
             result[0] = -b / (2 * a);
             return result;
         }
-        return null;
+        return Arrays.getNewSizeDoubleArray(0);
+    }
+
+    public static int[] notDivisibleByThree(int size) {
+        int[] result = Arrays.getNewSizeIntArray(size);
+        int k = 1;
+        for (int i = 0; i != size; i++, k++) {
+            result[i] = k;
+            if ((k % 3) == 0) {
+                result[i] = k + 1;
+                k++;
+            }
+        }
+        return result;
+    }
+
+    public static double[] getArithmeticProgression(double firstNumber, double difference, int size) {
+        double[] result = Arrays.getNewSizeDoubleArray(size);
+        for (int i = 0; i != size; i++) {
+            result[i] = firstNumber + i * difference;
+        }
+        return result;
     }
 }
