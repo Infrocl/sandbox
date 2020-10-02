@@ -5,8 +5,10 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class ArraysTest {
+    final private double ACCURACY = 0.0005;
+
     @Test
-    public void testGetNewDSizeIntArray() {
+    public void testGetNewSizeIntArray() {
         int[] numbers = Arrays.getNewSizeIntArray(5);
         int[] empty = Arrays.getNewSizeIntArray(0);
         assertEquals(numbers[2], 0);
@@ -72,5 +74,18 @@ public class ArraysTest {
         assertEquals(numbers[2], 0.0);
         assertEquals(numbers.length, 5);
         assertEquals(empty.length, 0);
+    }
+
+    @Test
+    public void testSolveQuadraticEquation() {
+        double[] firstEquation = Arrays.solveQuadraticEquation(0.0005, 2, 5);
+        assertEquals(firstEquation[0], -3997.4984, ACCURACY);
+        assertEquals(firstEquation[1], -2.50156, ACCURACY);
+        assertEquals(firstEquation.length, 2);
+        double[] secondEquation = Arrays.solveQuadraticEquation(0, -3, -9);
+        assertEquals(secondEquation.length, 1);
+        assertEquals(secondEquation[0], -3, ACCURACY);
+        double[] thirdEquation = Arrays.solveQuadraticEquation(1, 2, 16);
+        assertEquals(thirdEquation.length, 0);
     }
 }

@@ -55,4 +55,28 @@ public class Arrays {
         }
         return numbers;
     }
+
+    public static double[] solveQuadraticEquation(double a, double b, double c) {
+        if (a == 0.0) {
+            double[] result = Arrays.getNewSizeDoubleArray(1);
+            result[0] = -c / b;
+            return result;
+        }
+        double D = Math.pow(b, 2) - 4 * a * c;
+        if (D > 0) {
+            double[] result = Arrays.getNewSizeDoubleArray(2);
+            result[0] = (-b - Math.sqrt(D)) / (2 * a);
+            result[1] = (-b + Math.sqrt(D)) / (2 * a);
+            return result;
+        }
+        if (D < 0) {
+            return Arrays.getNewSizeDoubleArray(0);
+        }
+        if (D == 0.0) {
+            double[] result = Arrays.getNewSizeDoubleArray(1);
+            result[0] = -b / (2 * a);
+            return result;
+        }
+        return null;
+    }
 }
