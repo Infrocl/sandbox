@@ -102,10 +102,18 @@ public class Arrays {
         return result;
     }
 
-    public static double[] getArithmeticProgression(double firstNumber, double difference, int size) {
+    public static double[] getArithmeticProgression(double firstNumber, double commonDifference, int size) {
         double[] result = Arrays.getNewSizeDoubleArray(size);
         for (int i = 0; i != size; i++) {
-            result[i] = firstNumber + i * difference;
+            result[i] = firstNumber + i * commonDifference;
+        }
+        return result;
+    }
+
+    public static double[] getGeometricProgression(double firstNumber, double commonRatio, int size) {
+        double[] result = Arrays.getNewSizeDoubleArray(size);
+        for (int i = 0; i != size; i++) {
+            result[i] = firstNumber * Math.pow(commonRatio, i);
         }
         return result;
     }

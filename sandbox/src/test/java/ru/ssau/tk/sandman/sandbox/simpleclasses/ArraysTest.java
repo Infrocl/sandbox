@@ -157,4 +157,32 @@ public class ArraysTest {
         assertEquals(fifthSequence[0], Double.NaN);
         assertEquals(fifthSequence[2], Double.NaN);
     }
+
+    @Test
+    public void testGetGeometricProgression() {
+        double[] firstSequence = Arrays.getGeometricProgression(1, 2, 5);
+        assertEquals(firstSequence[1], 2, ACCURACY);
+        assertEquals(firstSequence[4], 16, ACCURACY);
+        assertNotEquals(firstSequence[0], 0, ACCURACY);
+        double[] secondSequence = Arrays.getGeometricProgression(-1, -2, 5);
+        assertNotEquals(secondSequence[0], 0, ACCURACY);
+        assertEquals(secondSequence[2], -4, ACCURACY);
+        assertEquals(secondSequence[4], -16, ACCURACY);
+    }
+
+    @Test
+    public void testGetGeometricProgressionInfinity() {
+        double[] firstSequence = Arrays.getGeometricProgression(Double.POSITIVE_INFINITY, -3, 4);
+        assertEquals(firstSequence[1], Double.NEGATIVE_INFINITY);
+        assertEquals(firstSequence[3], Double.NEGATIVE_INFINITY);
+        double[] secondSequence = Arrays.getGeometricProgression(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 3);
+        assertEquals(secondSequence[1], Double.POSITIVE_INFINITY);
+        assertEquals(secondSequence[2], Double.POSITIVE_INFINITY);
+        double[] thirdSequence = Arrays.getGeometricProgression(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 3);
+        assertEquals(thirdSequence[1], Double.NEGATIVE_INFINITY);
+        assertEquals(thirdSequence[2], Double.POSITIVE_INFINITY);
+        double[] fourthSequence = Arrays.getGeometricProgression(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, 3);
+        assertEquals(fourthSequence[1], Double.NEGATIVE_INFINITY);
+        assertEquals(fourthSequence[2], Double.NEGATIVE_INFINITY);
+    }
 }
