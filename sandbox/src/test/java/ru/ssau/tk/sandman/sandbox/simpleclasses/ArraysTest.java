@@ -13,6 +13,12 @@ public class ArraysTest {
         }
     }
 
+    private void printArray(int[] array) {
+        for (int i = 0; i != array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+
     @Test
     public void testGetNewSizeIntArray() {
         int[] numbers = Arrays.getNewSizeIntArray(5);
@@ -184,5 +190,33 @@ public class ArraysTest {
         double[] fourthSequence = Arrays.getGeometricProgression(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, 3);
         assertEquals(fourthSequence[1], Double.NEGATIVE_INFINITY);
         assertEquals(fourthSequence[2], Double.NEGATIVE_INFINITY);
+    }
+
+    @Test
+    public void testSieveOfEratosthenes() {
+        int[] primeNumbers1 = Arrays.sieveOfEratosthenes(14_401);
+        assertNotEquals(primeNumbers1[0], 1);
+        assertEquals(primeNumbers1.length, 30);
+        assertEquals(primeNumbers1[29], 113);
+        assertEquals(primeNumbers1[7], 19);
+        int[] primeNumbers2 = Arrays.sieveOfEratosthenes(169);
+        assertEquals(primeNumbers2.length, 6);
+        assertNotEquals(primeNumbers1[0], 1);
+        assertEquals(primeNumbers2[5], 13);
+        assertEquals(primeNumbers2[3], 7);
+    }
+
+    @Test
+    public void testGetDivisors() {
+        int[] divisors = Arrays.getDivisors(75);
+        assertEquals(divisors.length, 6);
+        assertEquals(divisors[0], 1);
+        assertEquals(divisors[5], 75);
+        assertEquals(divisors[3], 15);
+        int[] divisorsOf144 = Arrays.getDivisors(144);
+        assertEquals(divisorsOf144.length, 15);
+        assertEquals(divisorsOf144[0], 1);
+        assertEquals(divisorsOf144[14], 144);
+        assertEquals(divisorsOf144[6], 9);
     }
 }

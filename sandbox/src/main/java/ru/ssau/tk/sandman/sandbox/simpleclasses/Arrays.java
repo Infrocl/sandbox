@@ -117,4 +117,55 @@ public class Arrays {
         }
         return result;
     }
+
+    /**
+     * Вычислительная сложность Решета Эратосфена: O(n log log n).
+     *
+     * @return Все простые числа до N.
+     */
+    public static int[] sieveOfEratosthenes(int N) {
+        int sqrt = (int) Math.sqrt(N);
+        int count = 1;
+        int[] sieve = new int[sqrt + 1];
+        for (int i = 2; i <= sqrt; i++) {
+            if (i != 2 && sieve[i] == 0) {
+                for (int k = i * i; k <= sqrt; k += 2 * i) {
+                    sieve[k] = 1;
+                }
+                count += 1;
+            }
+            if (i == 2) {
+                for (int k = i * i; k <= sqrt; k += i) {
+                    sieve[k] = 1;
+                }
+            }
+        }
+        int[] result = new int[count];
+        for (int i = 0, k = 2; i != count; k++) {
+            if (sieve[k] == 0) {
+                result[i] = k;
+                i++;
+            }
+        }
+        return result;
+    }
+
+    public static int[] getDivisors(int number) {
+        int counter = 0;
+        for (int i = 1; i <= (int) Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                counter += 1;
+            }
+        }
+        counter = 2 * counter - (Math.sqrt(number) == (int) Math.sqrt(number) ? 1 : 0);
+        int[] result = new int[counter];
+        for (int j = 0, k = 0; j != (int) Math.sqrt(number); j++) {
+            if (number % (j + 1) == 0) {
+                result[k] = j + 1;
+                result[counter - 1 - k] = number / (j + 1);
+                k += 1;
+            }
+        }
+        return result;
+    }
 }
