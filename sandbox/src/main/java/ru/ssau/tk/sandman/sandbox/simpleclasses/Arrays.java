@@ -1,5 +1,7 @@
 package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
+import static java.lang.StrictMath.abs;
+
 public class Arrays {
     private Arrays() {
     }
@@ -167,5 +169,40 @@ public class Arrays {
             }
         }
         return result;
+    }
+
+    public static int[] getSequence(int size) {
+        int[] result = new int[size];
+        int mid = size % 2 == 0 ? size / 2 : size / 2 + 1;
+        for (int i = 0; i != mid; i++) {
+            result[i] = i + 1;
+            result[size - 1 - i] = i + 1;
+        }
+        return result;
+    }
+
+    public static void setOppositeSign(double[] array) {
+        for (int i = 0; i != array.length; i++) {
+            array[i] = -array[i];
+        }
+    }
+
+    public static boolean findNumber(double[] array, double number) {
+        if (Double.isInfinite(number)) {
+            throw new IllegalArgumentException("Input value must be finite!");
+        }
+        if (Double.isNaN(number)) {
+            for (int i = 0; i != array.length; i++) {
+                if (Double.isNaN(array[i])) {
+                    return true;
+                }
+            }
+        }
+        for (int i = 0; i != array.length; i++) {
+            if (abs(array[i] - number) <= 0.0001) {
+                return true;
+            }
+        }
+        return false;
     }
 }

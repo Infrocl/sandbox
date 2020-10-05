@@ -219,4 +219,60 @@ public class ArraysTest {
         assertEquals(divisorsOf144[14], 144);
         assertEquals(divisorsOf144[6], 9);
     }
+
+    @Test
+    public void testGetSequence() {
+        int[] empty = Arrays.getSequence(0);
+        assertEquals(empty.length, 0);
+        int[] firstSequence = Arrays.getSequence(7);
+        assertEquals(firstSequence[3], 4);
+        assertEquals(firstSequence[6], 1);
+        assertNotEquals(firstSequence[0], 0);
+        int[] secondSequence = Arrays.getSequence(8);
+        assertEquals(secondSequence[4], 4);
+        assertEquals(secondSequence[3], 4);
+        assertEquals(secondSequence[7], 1);
+        assertNotEquals(secondSequence[0], 0);
+    }
+
+    @Test
+    public void testSetOppositeSign() {
+        double[] array = {1.0, 2.0, -3.0, 0.0, 5.0};
+        Arrays.setOppositeSign(array);
+        assertEquals(array[0], -1.0);
+        assertEquals(array[2], 3.0);
+        assertEquals(array[3], -0.0);
+        assertNotEquals(array[4], 5.0);
+        double[] empty = new double[0];
+        Arrays.setOppositeSign(empty);
+    }
+
+    @Test
+    public void testSetOppositeSignInfinityAndNaN() {
+        double[] array = {Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, Double.NaN};
+        Arrays.setOppositeSign(array);
+        assertEquals(array[0], Double.NEGATIVE_INFINITY);
+        assertEquals(array[1], Double.POSITIVE_INFINITY);
+        assertEquals(array[2], Double.NaN);
+    }
+
+    @Test
+    public void testFindNumber() {
+        double[] array = {1.00001, 2.0, 35.2580002, 0.0};
+        assertTrue(Arrays.findNumber(array, 1));
+        assertTrue(Arrays.findNumber(array, 35.258));
+        assertFalse(Arrays.findNumber(array, 2.001));
+        assertTrue(Arrays.findNumber(array, -0.0));
+        assertFalse(Arrays.findNumber(array, Double.NaN));
+        double[] empty = new double[0];
+        assertFalse(Arrays.findNumber(empty, 0));
+    }
+
+    @Test
+    public void testFindNumberInfinityAndNaN() {
+        double[] array = {Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, Double.NaN};
+        assertTrue(Arrays.findNumber(array, Double.NaN));
+        assertThrows(IllegalArgumentException.class, () -> Arrays.findNumber(array, Double.NEGATIVE_INFINITY));
+        assertThrows(IllegalArgumentException.class, () -> Arrays.findNumber(array, Double.POSITIVE_INFINITY));
+    }
 }
