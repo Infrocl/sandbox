@@ -205,4 +205,61 @@ public class Arrays {
         }
         return false;
     }
+
+    public static boolean findNull(Integer[] array) {
+        for (int i = 0; i != array.length; i++) {
+            if (array[i] == null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int countEvenNumbers(double[] array) {
+        int counter = 0;
+        for (int i = 0; i != array.length; i++) {
+            counter += array[i] % 2 == 0 ? 1 : 0;
+        }
+        return counter;
+    }
+
+    public static Integer findMaxNumber(int[] array) {
+        if (array.length == 0) {
+            return null;
+        }
+        int maxNumber = array[0];
+        for (int i = 1; i != array.length; i++) {
+            if (array[i] > maxNumber) {
+                maxNumber = array[i];
+            }
+        }
+        return maxNumber;
+    }
+
+    public static double sumNumbersWithEvenIndexes(double[] array) {
+        double sum = 0;
+        if (array.length == 0) {
+            return sum;
+        }
+        for (int i = 0; 2 + i <= array.length; i += 2) {
+            sum += array[i];
+        }
+        return sum;
+    }
+
+    public static boolean compareNumberOfDivisors(int[] array) {
+        int counter = 0;
+        if (array.length == 0) {
+            return false;
+        }
+        for (int i = 1; i != array.length - 1; i++) {
+            if (array[i] % array[0] == 0) {
+                counter += 1;
+            }
+            if (array[i] % array[array.length - 1] == 0) {
+                counter -= 1;
+            }
+        }
+        return counter > 0;
+    }
 }

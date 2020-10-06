@@ -275,4 +275,60 @@ public class ArraysTest {
         assertThrows(IllegalArgumentException.class, () -> Arrays.findNumber(array, Double.NEGATIVE_INFINITY));
         assertThrows(IllegalArgumentException.class, () -> Arrays.findNumber(array, Double.POSITIVE_INFINITY));
     }
+
+    @Test
+    public void testFindNull() {
+        Integer[] empty = new Integer[0];
+        Integer[] array = {1, 2, null, 45, 0};
+        Integer[] zeroArray = {0, 0, 0};
+        assertTrue(Arrays.findNull(array));
+        assertFalse(Arrays.findNull(empty));
+        assertFalse(Arrays.findNull(zeroArray));
+    }
+
+    @Test
+    public void testCountEvenNumbers() {
+        double[] empty = new double[0];
+        double[] array = {1, 2, 3, 2.5, 1.75, 0.0};
+        double[] scaryArray = {Double.NaN, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY};
+        assertEquals(Arrays.countEvenNumbers(empty), 0);
+        assertEquals(Arrays.countEvenNumbers(array), 2);
+        assertEquals(Arrays.countEvenNumbers(scaryArray), 0);
+    }
+
+    @Test
+    public void testFindMaxNumber() {
+        int[] empty = new int[0];
+        int[] array = {1, 2, 75, 35, 40, 0};
+        int[] unitArray = {1, 1, 1};
+        assertNull(Arrays.findMaxNumber(empty));
+        assertEquals(Arrays.findMaxNumber(array), Integer.valueOf(75));
+        assertEquals(Arrays.findMaxNumber(unitArray), Integer.valueOf(1));
+    }
+
+    @Test
+    public void testSumNumbersWithEvenIndexes() {
+        double[] empty = new double[0];
+        double[] array = {1.0, 2, 3.5, 4};
+        double[] infinityArray = {0, 1, Double.POSITIVE_INFINITY, 2, Double.NEGATIVE_INFINITY, 3};
+        double[] anotherInfinityArray = {0, 1, Double.NEGATIVE_INFINITY, 2, Double.NEGATIVE_INFINITY, 3};
+        double[] nanArray = {Double.NaN, 2, Double.NEGATIVE_INFINITY};
+        assertEquals(Arrays.sumNumbersWithEvenIndexes(empty), 0, ACCURACY);
+        assertEquals(Arrays.sumNumbersWithEvenIndexes(array), 4.5, ACCURACY);
+        assertEquals(Arrays.sumNumbersWithEvenIndexes(infinityArray), Double.NaN);
+        assertEquals(Arrays.sumNumbersWithEvenIndexes(anotherInfinityArray), Double.NEGATIVE_INFINITY);
+        assertEquals(Arrays.sumNumbersWithEvenIndexes(nanArray), Double.NaN);
+    }
+
+    @Test
+    public void testCompareNumberOfDivisors() {
+        int[] empty = new int[0];
+        int[] firstArray = {1, 2, 3, 4};
+        int[] lastArray = {2, 3, 4, 1};
+        int[] unitArray = {1, 1, 1, 1};
+        assertFalse(Arrays.compareNumberOfDivisors(empty));
+        assertTrue(Arrays.compareNumberOfDivisors(firstArray));
+        assertFalse(Arrays.compareNumberOfDivisors(lastArray));
+        assertFalse(Arrays.compareNumberOfDivisors(unitArray));
+    }
 }
