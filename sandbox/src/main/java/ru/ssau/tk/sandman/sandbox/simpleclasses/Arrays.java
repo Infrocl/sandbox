@@ -262,4 +262,34 @@ public class Arrays {
         }
         return counter > 0;
     }
+
+    public static double findTheMostCommonNumber(double[] array) {
+        double value;
+        double maxValue = array[0];
+        int maxCounter = 0;
+        int counter = 0;
+        for (int i = 0; i != array.length; i++) {
+            if (Double.isNaN(array[i])) {
+                throw new IllegalArgumentException("Array's elements can't be NaN!");
+            }
+            if (Double.isInfinite(array[i])) {
+                throw new IllegalArgumentException("Array's elements must be finite!");
+            }
+            for (int j = i + 1; j != array.length; j++) {
+                if (Math.abs(array[i] - array[j]) <= 0.00001) {
+                    value = array[i + 1];     //помещаем одинаковые элементы рядом
+                    array[i + 1] = array[j];  //чтобы сократить число итераций
+                    array[j] = value;
+                    counter += 1;
+                }
+            }
+            i += counter;                     //пропускаем повторяющиеся элементы
+            if (counter > maxCounter) {
+                maxValue = array[i];
+                maxCounter = counter;
+            }
+            counter = 0;
+        }
+        return maxValue;
+    }
 }

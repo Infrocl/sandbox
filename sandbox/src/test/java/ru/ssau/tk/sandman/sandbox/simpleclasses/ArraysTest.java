@@ -331,4 +331,22 @@ public class ArraysTest {
         assertFalse(Arrays.compareNumberOfDivisors(lastArray));
         assertFalse(Arrays.compareNumberOfDivisors(unitArray));
     }
+
+    @Test
+    public void testFindTheMostCommonNumber() {
+        double[] array = {1, 2, 1, 3, 4, 3, 5};
+        double[] secondArray = {0, 2, 6, 5, 4, 3, 0};
+        double[] thirdArray = {3, 2, 6, 5, 4, 3.5, 0};
+        assertEquals(Arrays.findTheMostCommonNumber(array), 1.0);
+        assertEquals(Arrays.findTheMostCommonNumber(secondArray), 0.0);
+        assertEquals(Arrays.findTheMostCommonNumber(thirdArray), 3.0);
+    }
+
+    @Test
+    public void testFindTheMostCommonNumberInfinityAndNan() {
+        double[] array = {1, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY};
+        double[] secondArray = {1, Double.NaN};
+        assertThrows(IllegalArgumentException.class, () -> Arrays.findTheMostCommonNumber(array));
+        assertThrows(IllegalArgumentException.class, () -> Arrays.findTheMostCommonNumber(secondArray));
+    }
 }
