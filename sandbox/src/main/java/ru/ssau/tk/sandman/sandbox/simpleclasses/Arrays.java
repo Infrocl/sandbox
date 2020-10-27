@@ -88,7 +88,7 @@ public class Arrays {
             result[0] = -b / (2 * a);
             return result;
         }
-        return Arrays.getNewSizeDoubleArray(0);
+        return new double[0];
     }
 
     public static int[] notDivisibleByThree(int size) {
@@ -199,7 +199,7 @@ public class Arrays {
             }
         }
         for (int i = 0; i != array.length; i++) {
-            if (abs(array[i] - number) <= 0.0001) {
+            if (abs(array[i] - number) <= 0.00001) {
                 return true;
             }
         }
@@ -291,5 +291,91 @@ public class Arrays {
             counter = 0;
         }
         return maxValue;
+    }
+
+    public static int getIndex(double[] array, double number) {
+        if (Double.isNaN(number)) {
+            for (int i = 0; i != array.length; i++) {
+                if (Double.isNaN(array[i])) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        for (int i = 0; i != array.length; i++) {
+            if (array[i] == number) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void swapMaxAndMinElements(double[] array) {
+        if (Double.isNaN(array[0])) {
+            throw new IllegalArgumentException("Array's elements can't be NaN!");
+        }
+        double minNumber = array[0];
+        double maxNumber = array[0];
+        int indexMin = 0;
+        int indexMax = 0;
+        for (int i = 1; i != array.length; i++) {
+            if (Double.isNaN(array[i])) {
+                throw new IllegalArgumentException("Array's elements can't be NaN!");
+            }
+            if (minNumber > array[i]) {
+                minNumber = array[i];
+                indexMin = i;
+            }
+            if (maxNumber < array[i]) {
+                maxNumber = array[i];
+                indexMax = i;
+            }
+        }
+        array[indexMin] = maxNumber;
+        array[indexMax] = minNumber;
+    }
+
+    public static void applyBitwiseNotToArray(int[] array) {
+        for (int i = 0; i != array.length; i++) {
+            array[i] = ~array[i];
+        }
+    }
+
+    public static int[] getBitwiseNotArray(int[] array) {
+        int[] returnArray = java.util.Arrays.copyOf(array, array.length);
+        Arrays.applyBitwiseNotToArray(returnArray);
+        return returnArray;
+    }
+
+    public static int[] sumAdjacentElements(int[] array) {
+        if (array.length % 2 == 0) {
+            int[] resultArray = new int[array.length / 2];
+            for (int i = 0, j = 0; j != array.length; i++, j += 2) {
+                resultArray[i] = array[j] + array[j + 1];
+            }
+            return resultArray;
+        }
+        int[] resultArray = new int[array.length / 2 + 1];
+        for (int i = 0, j = 0; j != array.length - 1; i++, j += 2) {
+            resultArray[i] = array[j] + array[j + 1];
+        }
+        resultArray[resultArray.length - 1] = array[array.length - 1];
+        return resultArray;
+    }
+
+    public static boolean[] isEven(int[] array) {
+        boolean[] resultArray = new boolean[array.length];
+        for (int i = 0; i != array.length; i++) {
+            resultArray[i] = array[i] % 2 == 0;
+        }
+        return resultArray;
+    }
+
+    public static int[] convertLongToTwoInts(long number) {
+        return new int[]{(int) (number >> 32), (int) number};
+    }
+
+    public static long convertTwoIntsToLong(int first, int last) {
+        return ((long) last | (long) first << 32);
     }
 }
