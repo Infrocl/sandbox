@@ -380,7 +380,7 @@ public class Arrays {
     }
 
     public static int[] getCycleOfNaturalNumbers(int size, int startingIndex) {
-        if (startingIndex < 0 || startingIndex >= size) {
+        if (startingIndex >= size) {
             throw new IllegalArgumentException("Invalid starting index!");
         }
         int[] array = new int[size];

@@ -481,8 +481,9 @@ public class ArraysTest {
         assertEquals(normalArray[2], 3);
         assertEquals(reversedArray[4], 1);
         assertEquals(reversedArray[0], 2);
-        assertThrows(IllegalArgumentException.class, () -> Arrays.getCycleOfNaturalNumbers(5, 5));
-        assertThrows(IllegalArgumentException.class, () -> Arrays.getCycleOfNaturalNumbers(3, -2));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> Arrays.getCycleOfNaturalNumbers(5, -3));
+        assertThrows(NegativeArraySizeException.class, () -> Arrays.getCycleOfNaturalNumbers(-2, -3));
+        assertThrows(IllegalArgumentException.class, () -> Arrays.getCycleOfNaturalNumbers(3, 4));
     }
 
     @Test
