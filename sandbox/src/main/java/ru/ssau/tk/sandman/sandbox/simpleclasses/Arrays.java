@@ -378,4 +378,28 @@ public class Arrays {
     public static long convertTwoIntsToLong(int first, int last) {
         return ((long) last | (long) first << 32);
     }
+
+    public static int[] getCycleOfNaturalNumbers(int size, int startingIndex) {
+        if (startingIndex < 0 || startingIndex >= size) {
+            throw new IllegalArgumentException("Invalid starting index!");
+        }
+        int[] array = new int[size];
+        int diff = startingIndex - 1;
+        for (int i = 0; i != size; i++, startingIndex++) {
+            array[startingIndex % size] = startingIndex - diff;
+        }
+        return array;
+    }
+
+    public static int[][] getSteppedArrayOfNaturalNumbers(int startingSize) {
+        int[][] array = new int[startingSize][];
+        int k = 1;
+        for (int i = 0; i != startingSize; i++) {
+            array[i] = new int[startingSize - i];
+            for (int j = 0; j != array[i].length; j++, k++) {
+                array[i][j] = k;
+            }
+        }
+        return array;
+    }
 }

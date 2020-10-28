@@ -363,8 +363,8 @@ public class ArraysTest {
         assertEquals(Arrays.getIndex(array, 20), 1);
         assertEquals(Arrays.getIndex(array, Double.NaN), -1);
         assertEquals(Arrays.getIndex(scaryArray, Double.NaN), 0);
-        assertEquals(Arrays.getIndex(scaryArray, 1.0 / 0), 1); //ради интереса, пройдёт равенство или нет
-        assertEquals(Arrays.getIndex(scaryArray, -2.0 / 0), 2);
+        assertEquals(Arrays.getIndex(scaryArray, Double.POSITIVE_INFINITY), 1);
+        assertEquals(Arrays.getIndex(scaryArray, Double.NEGATIVE_INFINITY), 2);
         assertEquals(Arrays.getIndex(scaryArray, 1), -1);
     }
 
@@ -452,8 +452,8 @@ public class ArraysTest {
 
     @Test
     public void testConvertLongToTwoInts() {
-        int[] array = Arrays.convertLongToTwoInts(-2L);
-        int[] secondArray = Arrays.convertLongToTwoInts(12666666666L);
+        final int[] array = Arrays.convertLongToTwoInts(-2L);
+        final int[] secondArray = Arrays.convertLongToTwoInts(12666666666L);
         assertEquals(Integer.toBinaryString(array[0]), Integer.toBinaryString(-1));
         assertEquals(Integer.toBinaryString(array[1]), Integer.toBinaryString(-2));
         assertEquals(Integer.toBinaryString(secondArray[0]), Integer.toBinaryString(2));
@@ -462,9 +462,44 @@ public class ArraysTest {
 
     @Test
     public void testConvertTwoIntsToLong() {
-        long result = Arrays.convertTwoIntsToLong(-1, -2);
-        long anotherResult = Arrays.convertTwoIntsToLong(2, 2);
+        final long result = Arrays.convertTwoIntsToLong(-1, -2);
+        final long anotherResult = Arrays.convertTwoIntsToLong(2, 2);
         assertEquals(result, -2);
         assertEquals(anotherResult, 8589934594L);
+    }
+
+    @Test
+    public void testGetCycleOfNaturalNumbers() {
+        final int[] array = Arrays.getCycleOfNaturalNumbers(6, 2);
+        final int[] normalArray = Arrays.getCycleOfNaturalNumbers(5, 0);
+        final int[] reversedArray = Arrays.getCycleOfNaturalNumbers(5, 4);
+        assertEquals(array[0], 5);
+        assertEquals(array[2], 1);
+        assertEquals(array[5], 4);
+        assertEquals(normalArray[0], 1);
+        assertEquals(normalArray[4], 5);
+        assertEquals(normalArray[2], 3);
+        assertEquals(reversedArray[4], 1);
+        assertEquals(reversedArray[0], 2);
+        assertThrows(IllegalArgumentException.class, () -> Arrays.getCycleOfNaturalNumbers(5, 5));
+        assertThrows(IllegalArgumentException.class, () -> Arrays.getCycleOfNaturalNumbers(3, -2));
+    }
+
+    @Test
+    public void testGetSteppedArrayOfNaturalNumbers() {
+        int[][] array = Arrays.getSteppedArrayOfNaturalNumbers(3);
+        int[][] emptyArray = Arrays.getSteppedArrayOfNaturalNumbers(0);
+        int[][] anotherArray = Arrays.getSteppedArrayOfNaturalNumbers(6);
+        assertEquals(array[0].length, 3);
+        assertEquals(array[2].length, 1);
+        assertEquals(emptyArray.length, 0);
+        assertEquals(anotherArray[0].length, 6);
+        assertEquals(anotherArray[5].length, 1);
+        assertEquals(array[0][0], 1);
+        assertEquals(array[0][2], 3);
+        assertEquals(array[2][0], 6);
+        assertEquals(anotherArray[0][0], 1);
+        assertEquals(anotherArray[0][5], 6);
+        assertEquals(anotherArray[5][0], 21);
     }
 }
