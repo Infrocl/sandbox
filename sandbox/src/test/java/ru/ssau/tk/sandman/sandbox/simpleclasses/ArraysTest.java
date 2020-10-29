@@ -488,9 +488,9 @@ public class ArraysTest {
 
     @Test
     public void testGetSteppedArrayOfNaturalNumbers() {
-        int[][] array = Arrays.getSteppedArrayOfNaturalNumbers(3);
-        int[][] emptyArray = Arrays.getSteppedArrayOfNaturalNumbers(0);
-        int[][] anotherArray = Arrays.getSteppedArrayOfNaturalNumbers(6);
+        final int[][] array = Arrays.getSteppedArrayOfNaturalNumbers(3);
+        final int[][] emptyArray = Arrays.getSteppedArrayOfNaturalNumbers(0);
+        final int[][] anotherArray = Arrays.getSteppedArrayOfNaturalNumbers(6);
         assertEquals(array[0].length, 3);
         assertEquals(array[2].length, 1);
         assertEquals(emptyArray.length, 0);
@@ -502,5 +502,44 @@ public class ArraysTest {
         assertEquals(anotherArray[0][0], 1);
         assertEquals(anotherArray[0][5], 6);
         assertEquals(anotherArray[5][0], 21);
+    }
+
+    @Test
+    public void testSortArrayWithoutNaN() {
+        double[] scaryArray = getScaryArray();
+        double[] array = {1.2, 5.0, 4.3, 2.1, -5.8};
+        Arrays.sortArrayWithoutNaN(scaryArray);
+        Arrays.sortArrayWithoutNaN(array);
+        assertEquals(scaryArray[0], Double.NaN);
+        assertEquals(scaryArray[1], Double.POSITIVE_INFINITY);
+        assertEquals(array[0], -5.8, ACCURACY);
+        assertEquals(array[1], 1.2, ACCURACY);
+        assertEquals(array[4], 5.0, ACCURACY);
+    }
+
+
+    @Test
+    public void testTestPrintArray() {
+        /*
+        String[] inputString = new String[4];
+        String[] testArray = {"a", " ", "cd", "efg"};
+        assertEquals(inputString[0], testArray[0]);
+        assertEquals(inputString[1], testArray[1]);
+        assertEquals(inputString[2], testArray[2]);
+        assertEquals(inputString[3], testArray[3]);
+
+         */
+    }
+
+    @Test
+    public void testMultiplyNumericNotZeroElements() {
+        final double[] scaryArray = {Double.POSITIVE_INFINITY, Double.NaN, 2.2};
+        final double[] arrayWithZero = {1.0, 3.5, 0.0, 1.5};
+        final double[] array = {1.0, -2.0, 3.0, -4.0};
+        final double[] superScaryArray = getScaryArray();
+        assertEquals(Arrays.multiplyNumericNotZeroElements(scaryArray), 2.2, ACCURACY);
+        assertEquals(Arrays.multiplyNumericNotZeroElements(arrayWithZero), 5.25, ACCURACY);
+        assertEquals(Arrays.multiplyNumericNotZeroElements(array), 24.0, ACCURACY);
+        assertEquals(Arrays.multiplyNumericNotZeroElements(superScaryArray), 0, ACCURACY);
     }
 }

@@ -402,4 +402,29 @@ public class Arrays {
         }
         return array;
     }
+
+    public static void sortArrayWithoutNaN(double[] array) {
+        for (int i = 0; i != array.length; i++) {
+            if (Double.isNaN(array[i])) {
+                return;
+            }
+        }
+        java.util.Arrays.sort(array);
+    }
+
+    public static void printArray(String[] array) {
+        for (String string : array) {
+            System.out.println(string);
+        }
+    }
+
+    public static double multiplyNumericNotZeroElements(double[] array) {
+        double result = 1;
+        for (double number : array) {
+            if (!Double.isNaN(number) && !Double.isInfinite(number) && number != 0.0) {
+                result *= number;
+            }
+        }
+        return result == 1 ? 0 : result;
+    }
 }
