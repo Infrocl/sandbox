@@ -427,4 +427,8 @@ public class Arrays {
         }
         return result == 1 ? 0 : result;
     }
+
+    public static void printInHex(int[] array) {
+        java.util.Arrays.stream(array).forEach(x -> System.out.println(Integer.toHexString(x)));
+    }
 }

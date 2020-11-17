@@ -2,6 +2,8 @@ package ru.ssau.tk.sandman.sandbox.simpleclasses;
 
 import org.testng.annotations.Test;
 
+import java.io.*;
+
 import static org.testng.Assert.*;
 
 public class ArraysTest {
@@ -517,18 +519,22 @@ public class ArraysTest {
         assertEquals(array[4], 5.0, ACCURACY);
     }
 
-
     @Test
     public void testTestPrintArray() {
-        /*
-        String[] inputString = new String[4];
-        String[] testArray = {"a", " ", "cd", "efg"};
-        assertEquals(inputString[0], testArray[0]);
-        assertEquals(inputString[1], testArray[1]);
-        assertEquals(inputString[2], testArray[2]);
-        assertEquals(inputString[3], testArray[3]);
-
-         */
+        String[] testArray = {"ab", "c0d", "efg25", " "};
+        try (ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+            PrintStream console = System.out;
+            System.setOut(new PrintStream(output));
+            Arrays.printArray(testArray);
+            String[] outputString = output.toString().split("\r\n");
+            System.setOut(console);
+            assertEquals(outputString[0], testArray[0]);
+            assertEquals(outputString[1], testArray[1]);
+            assertEquals(outputString[2], testArray[2]);
+            assertEquals(outputString[3], testArray[3]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -541,5 +547,11 @@ public class ArraysTest {
         assertEquals(Arrays.multiplyNumericNotZeroElements(arrayWithZero), 5.25, ACCURACY);
         assertEquals(Arrays.multiplyNumericNotZeroElements(array), 24.0, ACCURACY);
         assertEquals(Arrays.multiplyNumericNotZeroElements(superScaryArray), 0, ACCURACY);
+    }
+
+    @Test
+    public void testPrintInHex() {
+        final int[] array = {0, 5, 10, 12, 16, -1, -3, -15}; //-1 == 1 в доп коде:
+        Arrays.printInHex(array);                   //00000001, инверсия ~1 = 11111110, доп код ~1+1 = 11111111 = ff
     }
 }

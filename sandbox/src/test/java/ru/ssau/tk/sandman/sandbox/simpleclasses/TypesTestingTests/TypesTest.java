@@ -12,10 +12,12 @@ import java.io.PrintStream;
 import static ru.ssau.tk.sandman.sandbox.simpleclasses.TypesTesting.Types.printType;
 
 public class TypesTest {
-    private ByteArrayOutputStream output = new ByteArrayOutputStream(); //именно этот поток, потому что его легко преобразовать в строку
+    private final ByteArrayOutputStream output = new ByteArrayOutputStream(); //именно этот поток, потому что его легко преобразовать в строку
+    private final PrintStream console = System.out;
 
     @BeforeTest
     public void setUpStreams() {
+
         System.setOut(new PrintStream(output)); //теперь то, что должно было выводиться в консоль, будет сохранено в потоке output
     }
 
@@ -95,6 +97,6 @@ public class TypesTest {
 
     @AfterTest
     public void cleanUpStreams() {
-        System.setOut(System.out);
+        System.setOut(console);
     }
 }
