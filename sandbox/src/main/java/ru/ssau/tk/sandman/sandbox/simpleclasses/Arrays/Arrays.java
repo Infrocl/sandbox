@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.Arrays;
 
 import static java.lang.StrictMath.abs;
 

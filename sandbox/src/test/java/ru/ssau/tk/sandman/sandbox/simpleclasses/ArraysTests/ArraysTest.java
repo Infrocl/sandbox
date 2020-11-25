@@ -1,8 +1,11 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.ArraysTests;
 
 import org.testng.annotations.Test;
+import ru.ssau.tk.sandman.sandbox.simpleclasses.Arrays.Arrays;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 
 import static org.testng.Assert.*;
 
