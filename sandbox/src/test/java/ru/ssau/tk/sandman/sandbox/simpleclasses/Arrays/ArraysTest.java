@@ -1,4 +1,4 @@
-package ru.ssau.tk.sandman.sandbox.simpleclasses.ArraysTests;
+package ru.ssau.tk.sandman.sandbox.simpleclasses.Arrays;
 
 import org.testng.annotations.Test;
 import ru.ssau.tk.sandman.sandbox.simpleclasses.Arrays.Arrays;
